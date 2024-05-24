@@ -2,16 +2,18 @@ package com.example.animationkotlin
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.animationkotlin.databinding.ActivityLoginBinding
 
-class LoginActivity : AppCompatActivity() {
+class PropertyActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -25,6 +27,12 @@ class LoginActivity : AppCompatActivity() {
 
         }
         playAnimation()
+
+        val buttonToNewPage = binding.button2
+        buttonToNewPage.setOnClickListener {
+            val intent = Intent(this, TransitionActivity::class.java)
+            startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())
+        }
 
     }
     private fun playAnimation() {
